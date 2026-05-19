@@ -1,0 +1,78 @@
+# ============================================================
+# 뚝딱비서 .gitignore  (v0.0.25 baseline)
+# ============================================================
+
+# --- PyInstaller / 빌드 ---
+build/
+dist/
+*.spec.bak
+pentong/build/
+pentong/dist/
+
+# --- 로컬 릴리스 아카이브 (GitHub Releases 로만 배포) ---
+Releases/*.exe
+Releases/*.exe.bak
+*.exe
+*.exe.bak
+뚝딱비서_이전빌드*
+*.zip
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+*.bak
+
+# --- Node (kordoc / rhwp bridge) ---
+# 빌드 산출물이라 commit 제외, 새 PC 에서는 SETUP.md 보고 npm install
+node_modules/
+pentong/kordoc_bridge/node_modules/
+pentong/rhwp_bridge/node_modules/
+pentong/kordoc_bridge/package-lock.json
+pentong/rhwp_bridge/package-lock.json
+*.log
+
+# --- Claude Code 로컬 설정 (개발자별) ---
+.claude/settings.local.json
+.claude/cache/
+.claude/sessions/
+.claude/projects/
+.specify/
+
+# --- 뚝딱비서 로컬 사용자 환경 (home 폴더 외 fallback) ---
+.ddukddak/
+
+# --- 테스트 산출물 / 임시 스크립트 ---
+# _test_session.py (핵심 회귀 테스트) 만 예외로 커밋
+_test_*.py
+!_test_session.py
+_test_*.log
+_test_session_result*.log
+_claude_settings_test.json
+_ddukddak_*.py
+_inspect*.py
+_make_*.py
+_verify*.py
+
+# --- 사용자 실제 작업 파일 (commit 금지) ---
+엑셀취합파일샘플/
+한글취합파일샘플/
+취합결과/
+새로운시나리오*/
+테스트시나리오모음/
+정산부서별*.xlsx
+정산부서별*.py
+세션_요약_*.txt
+~$*
+
+# pentong/samples 와 pentong/templates 는 비어있어도 폴더 보존 위해 commit 가능
+# 단 안에 사용자 데이터 들어가면 별도 .gitignore 필요
+
+# --- OS / IDE ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
