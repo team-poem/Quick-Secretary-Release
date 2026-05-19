@@ -36,11 +36,12 @@ pentong/rhwp_bridge/package-lock.json
 *.log
 
 # --- Claude Code 로컬 설정 (개발자별) ---
-.claude/settings.local.json
-.claude/cache/
-.claude/sessions/
-.claude/projects/
-.specify/
+# pentong/.claude/ 도 매칭되도록 ** prefix
+**/.claude/settings.local.json
+**/.claude/cache/
+**/.claude/sessions/
+**/.claude/projects/
+**/.specify/
 
 # --- 뚝딱비서 로컬 사용자 환경 (home 폴더 외 fallback) ---
 .ddukddak/
@@ -67,6 +68,27 @@ _verify*.py
 정산부서별*.py
 세션_요약_*.txt
 ~$*
+
+# --- 바이너리 문서 (개인정보·기관명 포함 가능성) ---
+# pentong/docs/ 에는 .md 만 commit, hwp/hwpx/xlsx/pdf 는 제외
+# 테스트 fixture 가 필요하면 pentong/tests/fixtures/ 같은 별도 폴더에
+**/docs/*.hwp
+**/docs/*.hwpx
+**/docs/*.xls
+**/docs/*.xlsx
+**/docs/*.pdf
+**/docs/*.docx
+**/docs/*.doc
+
+# 루트의 사용자 작업 파일 (안전망)
+*.hwp
+*.hwpx
+*.xls
+*.xlsx
+!pentong/docs/**.md
+# Wails/PyInstaller 등이 만드는 .png/.ico 는 commit 가능, 단 module-status.png 같은
+# 일회성 dev 스크린샷은 제외
+module-status.png
 
 # pentong/samples 와 pentong/templates 는 비어있어도 폴더 보존 위해 commit 가능
 # 단 안에 사용자 데이터 들어가면 별도 .gitignore 필요
